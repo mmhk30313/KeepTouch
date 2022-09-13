@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import React, { Component } from 'react';
+import Footer from '../../components/Footer/Footer';
+import Navigation from '../../components/Navigation/Navigation';
 
 class blog extends Component {
     constructor(props: any) {
@@ -18,7 +20,7 @@ class blog extends Component {
                     <title>Blog: {title}</title>
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                
+                <Navigation/>
                 <main>
                     <h1 
                         className='
@@ -33,6 +35,7 @@ class blog extends Component {
                             Blog: {slug}
                     </h1>
                 </main>
+                <Footer/>
             </React.Fragment>
         );
     }
