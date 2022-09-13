@@ -8,7 +8,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
+export default function Navigation() {
   const [navigation, setNavigation] = useState(routes);
   const [path, setPath] = useState('');
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function Example() {
                 </Link>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
-                    {navigation.map((item: any) => (
+                    {navigation?.map((item: any) => (
                       <Link 
                         key={item?.id}
                         href={item?.href}

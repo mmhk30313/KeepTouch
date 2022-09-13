@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import React from 'react';
-import Footer from '../../components/Footer/Footer';
-import Navigation from '../../components/Navigation/Navigation';
+import Layout from '../../components/Layouts/MainLayout';
 
 const index = () => {
     return (
@@ -11,14 +10,13 @@ const index = () => {
                 <meta name="description" content="This is our about page" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Navigation/>
-            <main className="p-12 px-16">
-                <h1 className="text-3xl mb-10 text-center uppercase font-bold">
-                    Popular Blogs
-                </h1>                
-            </main>
-            <Footer/>
-            
+            <Layout>
+                <main className="p-12 px-16">
+                    <h1 className="text-3xl mb-10 text-center uppercase font-bold">
+                        Popular Blogs
+                    </h1>                
+                </main>
+            </Layout>            
         </React.Fragment>
     );
 };

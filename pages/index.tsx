@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import Blogs from '../components/Blogs/Blogs';
 // import Image from 'next/image';
-import Footer from '../components/Footer/Footer';
-// import Login from '../components/Login/Login';
-import Navigation from '../components/Navigation/Navigation'
+import Layout from '../components/Layouts/MainLayout';
 import { get_all_blogs, get_all_users } from '../services/blog.service';
 // import styles from '../styles/Home.module.css';
 
@@ -15,9 +13,9 @@ export default function Home(props: any) {
   const blogs = posts?.map((post: any) => {
     const photo = photos?.find((photo: any) => photo.id === post.id);
     return {
-      title: post.title,
-      body: post.body,
-      id: post.id,
+      title: post?.title,
+      body: post?.body,
+      id: post?.id,
       ...photo
       // user: users.find((user: any) => user.id === post.userId)
     }
@@ -32,12 +30,13 @@ export default function Home(props: any) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navigation />
-      {/* <Login/> */}
-      <main className='py-12 pr-10 md:p-12 md:px-10 md:mx-20'>
-          <Blogs blogs={blogs}/>
-      </main>
-      <Footer/>
+      <Layout>
+        {/* <Login/> */}
+        <main className='py-12 pr-10 md:p-12 md:px-10 md:mx-20'>
+            <Blogs blogs={blogs}/>
+        </main>
+
+      </Layout>
     </div>
   )
 };
@@ -49,6 +48,8 @@ export async function getServerSideProps(context: any) {
   const res = await fetch(`https://pixabay.com/api/?key=${KEY}=${""}&image_type=photo&pretty=true`);
   const photos = await res.json();
 
+  console.log({photos});
+  
   return {
     props: {
       posts,
